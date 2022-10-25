@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
+    tools:context=".activities.CalcularActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agro Tilápia"
+        android:textColor="@color/purple_200"
+        android:textSize="35dp"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Peso Médio da Cultura (g)"
+        android:textColor="@color/grey"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/edPesoMedio"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:hint="INSIRA AQUI..."
+        android:imeActionLabel="usuario"
+        android:inputType="number"
+        android:textColor="@color/grey" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Temperatura da Água em (°C)"
+        android:textColor="@color/grey"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/edTempAgua"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:hint="INSIRA AQUI..."
+        android:imeActionLabel="usuario"
+        android:inputType="number"
+        android:textColor="@color/grey" />
+
+    <ImageView
+        android:layout_width="405dp"
+        android:layout_height="290dp"
+        android:layout_marginTop="6dp"
+        android:src="@drawable/tutu" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|bottom"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp">
+
+        <Button
+            android:id="@+id/btVoltar"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/purple_200"
+            android:text="voltar"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            tools:ignore="MissingConstraints"
+            android:onClick="btVoltarOnClick"/>
+
+        <Button
+            android:id="@+id/btCalcular"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/teal_700"
+            android:text="Calcular"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:onClick="btCalcularOnClick"/>
+    </LinearLayout>
+
+</LinearLayout>

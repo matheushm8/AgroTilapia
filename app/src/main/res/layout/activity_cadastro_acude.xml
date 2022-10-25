@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.CadastroAcudeActivity"
+    android:orientation="vertical"
+    android:background="@color/black">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cadastro de Açude"
+        android:textColor="@color/purple_200"
+        android:textSize="35dp"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Insira um nome de identificação para o Açude"
+        android:textColor="@color/grey"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/edNomeAcude"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:hint="Identificação do Açude"
+        android:imeActionLabel="usuario"
+        android:textColor="@color/grey" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Especie de Cultivo"
+        android:textColor="@color/grey"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:layout_marginTop="30dp"/>
+
+    <Spinner
+        android:id="@+id/spEspecies"
+        android:layout_width="350dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/grey"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Insira a quantidade de peixes"
+        android:textColor="@color/grey"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/edQtdPeixes"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:hint="Identificação do Açude"
+        android:inputType="number"
+        android:imeActionLabel="usuario"
+        android:textColor="@color/grey" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|center"
+        android:paddingBottom="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btVoltar"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="30dp"
+            android:textSize="15dp"
+            android:text="Cancelar"
+            android:backgroundTint="@color/purple_200"
+            android:textColor="@color/black"
+            android:onClick="btVoltarOnClick"/>
+
+        <Button
+            android:id="@+id/btCadastrar"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/teal_700"
+            android:text="Salvar"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:onClick="btSalvarOnClick"/>
+    </LinearLayout>
+
+</LinearLayout>

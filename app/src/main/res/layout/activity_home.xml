@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.HomeActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Açudes Cadastrados"
+        android:textColor="@color/purple_200"
+        android:textSize="35dp"
+        android:textAlignment="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/lvListaAcude"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvListaVaziaMsg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="250dp"
+            android:text="Você não possui açudes cadastrados! \n Cadastre um açude!"
+            android:textAlignment="center"
+            android:textColor="@color/grey"
+            android:textSize="20dp"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center|bottom"
+        android:paddingBottom="20dp">
+
+        <Button
+            android:id="@+id/btVoltar"
+            android:onClick="btVoltarOnClick"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/purple_200"
+            android:text="voltar"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:layout_marginRight="20dp"/>
+
+        <Button
+            android:id="@+id/btCadastrar"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/teal_700"
+            android:onClick="btCadastrarOnClick"
+            android:text="Cadastrar"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+</LinearLayout>
