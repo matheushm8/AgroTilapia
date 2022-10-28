@@ -27,9 +27,6 @@ public class CalcularActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calcular);
 
-        Bundle bundle = getIntent().getExtras();
-        acude = acontroller.retornaAcude(bundle.getInt("codigo_acude"));
-
         edPesoMedio = findViewById(R.id.edPesoMedio);
         edTempAgua = findViewById(R.id.edTempAgua);
 
@@ -38,10 +35,14 @@ public class CalcularActivity extends AppCompatActivity {
 
     public void btCalcularOnClick(View view) {
 
+        Bundle bundle = getIntent().getExtras();
+        acude = acontroller.retornaAcude(bundle.getInt("codigo_acude"));
+
         if (edPesoMedio.getText().toString().isEmpty() || edTempAgua.getText().toString().isEmpty()) {
             Toast.makeText(this, "Todos os Campos Devem ser Preenchidos", Toast.LENGTH_SHORT).show();
             return;
         }
+
         calculadora.calcular(
                 acude.getQtdPeixe(), Double.parseDouble(edPesoMedio.getText().toString()), Double.parseDouble(edTempAgua.getText().toString()));
 

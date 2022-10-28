@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 public class CalculadoraController implements Parcelable {
 
-    private CalculadoraController calculadora;
-
     //VALORES DA TABELA
     private int refPorDia = 0;
     private double percPV = 0.0;
@@ -22,37 +20,58 @@ public class CalculadoraController implements Parcelable {
     public CalculadoraController (){};
 
     public void calcular(int qtdPeixes, double pesoMedio, double temperatura) {
-        valorestabela(pesoMedio); // Atualiza valores da tabela
-        qtdRacaoPorTemp(temperatura);
+        limpaValores();
 
-        double biomassa = (qtdPeixes * pesoMedio) / 1000;
+        if (percRacaoPorTemp(temperatura) > 0) {
 
-        qtdRacaoPorDia = (biomassa * (percPV/100)) * (percTemp/100);
+            valorestabela(pesoMedio); // Atualiza valores da tabela
 
-        qtdRacaoPorRefeicao = qtdRacaoPorDia / refPorDia;
+            double biomassa = (qtdPeixes * pesoMedio) / 1000;
+
+            qtdRacaoPorDia = (biomassa * (percPV / 100)) * (percTemp / 100);
+
+            qtdRacaoPorRefeicao = qtdRacaoPorDia / refPorDia;
+        } else {
+            tipoRacao = "Não alimentar";
+        }
     }
 
-    private void qtdRacaoPorTemp(double temperatura) {
+    private void limpaValores() {
+        refPorDia = 0;
+        percPV = 0.0;
+        percTemp = 0.0;
+        tipoRacao = "";
+
+        qtdRacaoPorRefeicao = 0.0;
+        qtdRacaoPorDia = 0.0;
+    }
+
+    private double percRacaoPorTemp(double temperatura) {
+        if (temperatura < 16) {
+            percTemp = 0;
+            return percTemp;
+        }
         if (temperatura >= 16 && temperatura < 20) { // 16 a 19
             percTemp = 60;
-            return;
+            return percTemp;
         }
         if (temperatura < 25) { // 20 a 24
             percTemp = 80;
-            return;
+            return percTemp;
         }
         if (temperatura < 30) { // 25 a 29
             percTemp = 100;
-            return;
+            return percTemp;
         }
         if (temperatura < 33) { // 30 a 32
             percTemp = 80;
-            return;
+            return percTemp;
         }
-        if (temperatura > 32) { // > 32
+        if (temperatura > 32) { // > 32 ou < 16
             percTemp = 0.0;
-            return;
+            return percTemp;
         }
+        return 0;
     }
 
     private void valorestabela(double pesoMedio) {
@@ -176,10 +195,4 @@ public class CalculadoraController implements Parcelable {
         }
     };
 
-    public CalculadoraController getInstance() {
-        if (calculadora == null) {
-            calculadora = new CalculadoraController();
-        }
-        return calculadora;
-    }
 }
