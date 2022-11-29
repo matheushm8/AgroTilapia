@@ -57,7 +57,6 @@ public class LoginActivity extends AppCompatActivity {
 
             pcontroller.salvarPropriedade(propriedade);
             Toast.makeText(this, "Propriedade cadastrada com sucesso!", Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, "Login Automático!", Toast.LENGTH_SHORT).show();
 
             LoginSingleton.limpaInstancia();
             LoginSingleton.iniciaPropriedadeLogada(propriedade.getCodigo(), propriedade.getNome());

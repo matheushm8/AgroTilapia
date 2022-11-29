@@ -85,6 +85,8 @@ public class AcudeListAdapter extends BaseAdapter {
             }
         });
 
+        //Passa o codigo do açude pra tela de calculadora com o put extra, e abre a tela.
+
         tvNomeAcude.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

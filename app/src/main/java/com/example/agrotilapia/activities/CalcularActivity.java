@@ -37,14 +37,19 @@ public class CalcularActivity extends AppCompatActivity {
     }
 
     public void btCalcularOnClick(View view) {
+    //Aqui recebe o açude escolhido que veio da açude list adapter
+        Bundle bundle = getIntent().getExtras();
+        acude = acontroller.retornaAcude(bundle.getInt("codigo_acude"));
 
         if (edPesoMedio.getText().toString().isEmpty() || edTempAgua.getText().toString().isEmpty()) {
             Toast.makeText(this, "Todos os Campos Devem ser Preenchidos", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        //com base no açude escolhido aqui faz o calculo.
         calculadora.calcular(
                 acude.getQtdPeixe(), Double.parseDouble(edPesoMedio.getText().toString()), Double.parseDouble(edTempAgua.getText().toString()));
-
+    // aqui abre a tela de resultado passando seus valores
         Intent resultadosPage = new Intent(this, ResultadosActivity.class);
         resultadosPage.putExtra("calculadora", calculadora);
         startActivity(resultadosPage);

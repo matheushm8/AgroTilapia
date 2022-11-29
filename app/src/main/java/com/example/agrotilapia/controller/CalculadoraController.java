@@ -21,11 +21,23 @@ public class CalculadoraController implements Parcelable {
 
     public CalculadoraController (){};
 
+
     public void calcular(int qtdPeixes, double pesoMedio, double temperatura) {
+
         valorestabela(pesoMedio); // Atualiza valores da tabela
         qtdRacaoPorTemp(temperatura);
 
+        limpaValores();
+
+        if (percRacaoPorTemp(temperatura) > 0) { //Aqui ele faz a verificação para ver se da pra alimentar baseado na temperatura
+
+            valorestabela(pesoMedio); // Atualiza valores pela tabela
+
+            double biomassa = (qtdPeixes * pesoMedio) / 1000;
+
+
         double biomassa = (qtdPeixes * pesoMedio) / 1000;
+
 
         qtdRacaoPorDia = (biomassa * (percPV/100)) * (percTemp/100);
 
@@ -33,6 +45,26 @@ public class CalculadoraController implements Parcelable {
     }
 
     private void qtdRacaoPorTemp(double temperatura) {
+
+            qtdRacaoPorRefeicao = qtdRacaoPorDia / refPorDia;
+        } else {
+            tipoRacao = "Não alimentar";
+        }
+    }
+    //apenas para limpar a calculadora
+    private void limpaValores() {
+        refPorDia = 0;
+        percPV = 0.0;
+        percTemp = 0.0;
+        tipoRacao = "";
+
+        qtdRacaoPorRefeicao = 0.0;
+        qtdRacaoPorDia = 0.0;
+    }
+
+    private double percRacaoPorTemp(double temperatura) {
+
+
         if (temperatura >= 16 && temperatura < 20) { // 16 a 19
             percTemp = 60;
             return;
@@ -49,17 +81,21 @@ public class CalculadoraController implements Parcelable {
             percTemp = 80;
             return;
         }
+
         if (temperatura > 32) { // > 32
+
+        if (temperatura < 16  || temperatura > 32) { //se a temperatura for menor que 16 ou maior que 32 entao nao alimenta
+
             percTemp = 0.0;
             return;
         }
     }
 
     private void valorestabela(double pesoMedio) {
-        if (pesoMedio >= 1 && pesoMedio < 5) {
+        if (pesoMedio >= 1 && pesoMedio < 5) { //gramas
             tipoRacao = "Ração em pó - 42% PB";
             refPorDia = 5;
-            percPV = 14.0;
+            percPV = 14.0;//percentual peso vivo
             return;
         }
         if (pesoMedio < 10) {
@@ -123,7 +159,7 @@ public class CalculadoraController implements Parcelable {
             return;
         }
     }
-
+//Aqui são os getters para pegalos de fora da classe
     public int getRefPorDia() {
         return refPorDia;
     }
