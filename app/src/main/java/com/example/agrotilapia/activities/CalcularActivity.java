@@ -38,9 +38,6 @@ public class CalcularActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         acude = acontroller.retornaAcude(bundle.getInt("codigo_acude"));
 
-        Bundle bundle = getIntent().getExtras();
-        acude = acontroller.retornaAcude(bundle.getInt("codigo_acude"));
-
         if (edPesoMedio.getText().toString().isEmpty() || edTempAgua.getText().toString().isEmpty()) {
             Toast.makeText(this, "Todos os Campos Devem ser Preenchidos", Toast.LENGTH_SHORT).show();
             return;

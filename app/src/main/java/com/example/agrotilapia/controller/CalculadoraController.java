@@ -17,52 +17,45 @@ public class CalculadoraController implements Parcelable {
     private double qtdRacaoPorRefeicao = 0.0;
     private double qtdRacaoPorDia = 0.0;
 
-    public CalculadoraController (){};
-
+    public CalculadoraController() {
+    }
 
     public void calcular(int qtdPeixes, double pesoMedio, double temperatura) {
         limpaValores();
 
-        if (percRacaoPorTemp(temperatura) > 0) {
+//        if (percRacaoPorTemp(temperatura) > 0) {
+//
+//            valorestabela(pesoMedio); // Atualiza valores da tabela
+//
+//            valorestabela(pesoMedio); // Atualiza valores da tabela
+//            qtdRacaoPorTemp(temperatura);
+//
+//            limpaValores();
 
-            valorestabela(pesoMedio); // Atualiza valores da tabela
+            if (percRacaoPorTemp(temperatura) > 0) { //Aqui ele faz a verificação para ver se da pra alimentar baseado na temperatura
 
-        valorestabela(pesoMedio); // Atualiza valores da tabela
-        qtdRacaoPorTemp(temperatura);
+                valorestabela(pesoMedio); // Atualiza valores pela tabela
 
-        limpaValores();
+                double biomassa = (qtdPeixes * pesoMedio) / 1000;
 
-        if (percRacaoPorTemp(temperatura) > 0) { //Aqui ele faz a verificação para ver se da pra alimentar baseado na temperatura
+                qtdRacaoPorDia = (biomassa * (percPV / 100)) * (percTemp / 100);
 
-            valorestabela(pesoMedio); // Atualiza valores pela tabela
-
-            double biomassa = (qtdPeixes * pesoMedio) / 1000;
-
-
-        double biomassa = (qtdPeixes * pesoMedio) / 1000;
-
-
-        qtdRacaoPorDia = (biomassa * (percPV/100)) * (percTemp/100);
-
-
-            double biomassa = (qtdPeixes * pesoMedio) / 1000;
-
-            qtdRacaoPorDia = (biomassa * (percPV / 100)) * (percTemp / 100);
-
-            qtdRacaoPorRefeicao = qtdRacaoPorDia / refPorDia;
-        } else {
-            tipoRacao = "Não alimentar";
+                qtdRacaoPorRefeicao = qtdRacaoPorDia / refPorDia;
+            } else {
+                tipoRacao = "Não alimentar";
+            }
         }
-    }
+//    }
 
 
     private void qtdRacaoPorTemp(double temperatura) {
-
-            qtdRacaoPorRefeicao = qtdRacaoPorDia / refPorDia;
-        } else {
-            tipoRacao = "Não alimentar";
-        }
+//        if
+//            qtdRacaoPorRefeicao = qtdRacaoPorDia / refPorDia;
+//        } else {
+//            tipoRacao = "Não alimentar";
+//        }
     }
+
     //apenas para limpar a calculadora
     private void limpaValores() {
         refPorDia = 0;
@@ -98,13 +91,7 @@ public class CalculadoraController implements Parcelable {
             return percTemp;
         }
 
-        if (temperatura > 32) { // > 32 ou < 16
-
-        if (temperatura > 32) { // > 32
-
-        if (temperatura < 16  || temperatura > 32) { //se a temperatura for menor que 16 ou maior que 32 entao nao alimenta
-
-
+        if (temperatura < 16 || temperatura > 32) { //se a temperatura for menor que 16 ou maior que 32 entao nao alimenta
             percTemp = 0.0;
             return percTemp;
         }
@@ -179,7 +166,8 @@ public class CalculadoraController implements Parcelable {
             return;
         }
     }
-//Aqui são os getters para pegalos de fora da classe
+
+    //Aqui são os getters para pegalos de fora da classe
     public int getRefPorDia() {
         return refPorDia;
     }
@@ -231,5 +219,5 @@ public class CalculadoraController implements Parcelable {
             return new CalculadoraController[size];
         }
     };
-
 }
+
