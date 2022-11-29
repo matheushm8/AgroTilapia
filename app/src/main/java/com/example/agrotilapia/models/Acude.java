@@ -2,7 +2,7 @@ package com.example.agrotilapia.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
+//entidades do banco
 public class Acude implements Parcelable {
     private int codigo;
     private int qtdPeixe;
