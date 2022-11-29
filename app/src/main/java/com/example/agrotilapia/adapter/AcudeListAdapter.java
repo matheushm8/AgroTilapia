@@ -79,6 +79,7 @@ public class AcudeListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent calculadoraPage = new Intent(context, CalcularActivity.class);
+                acude = (Acude) getItem(position);
                 calculadoraPage.putExtra("codigo_acude", acude.getCodigo());
                 context.startActivity(calculadoraPage);
 
@@ -91,6 +92,7 @@ public class AcudeListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent calculadoraPage = new Intent(context, CalcularActivity.class);
+                acude = (Acude) getItem(position);
                 calculadoraPage.putExtra("codigo_acude", acude.getCodigo());
                 context.startActivity(calculadoraPage);
             }

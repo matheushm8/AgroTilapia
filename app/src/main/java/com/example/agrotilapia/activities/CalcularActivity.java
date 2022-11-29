@@ -27,9 +27,6 @@ public class CalcularActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calcular);
 
-        Bundle bundle = getIntent().getExtras();
-        acude = acontroller.retornaAcude(bundle.getInt("codigo_acude"));
-
         edPesoMedio = findViewById(R.id.edPesoMedio);
         edTempAgua = findViewById(R.id.edTempAgua);
 
@@ -47,6 +44,7 @@ public class CalcularActivity extends AppCompatActivity {
         }
 
         //com base no açude escolhido aqui faz o calculo.
+
         calculadora.calcular(
                 acude.getQtdPeixe(), Double.parseDouble(edPesoMedio.getText().toString()), Double.parseDouble(edTempAgua.getText().toString()));
     // aqui abre a tela de resultado passando seus valores

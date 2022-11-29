@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 public class CalculadoraController implements Parcelable {
 
-    private CalculadoraController calculadora;
-
     //VALORES DA TABELA
     private int refPorDia = 0;
     private double percPV = 0.0;
@@ -19,38 +17,45 @@ public class CalculadoraController implements Parcelable {
     private double qtdRacaoPorRefeicao = 0.0;
     private double qtdRacaoPorDia = 0.0;
 
-    public CalculadoraController (){};
-
+    public CalculadoraController() {
+    }
 
     public void calcular(int qtdPeixes, double pesoMedio, double temperatura) {
-
-        valorestabela(pesoMedio); // Atualiza valores da tabela
-        qtdRacaoPorTemp(temperatura);
-
         limpaValores();
 
-        if (percRacaoPorTemp(temperatura) > 0) { //Aqui ele faz a verificação para ver se da pra alimentar baseado na temperatura
+//        if (percRacaoPorTemp(temperatura) > 0) {
+//
+//            valorestabela(pesoMedio); // Atualiza valores da tabela
+//
+//            valorestabela(pesoMedio); // Atualiza valores da tabela
+//            qtdRacaoPorTemp(temperatura);
+//
+//            limpaValores();
 
-            valorestabela(pesoMedio); // Atualiza valores pela tabela
+            if (percRacaoPorTemp(temperatura) > 0) { //Aqui ele faz a verificação para ver se da pra alimentar baseado na temperatura
 
-            double biomassa = (qtdPeixes * pesoMedio) / 1000;
+                valorestabela(pesoMedio); // Atualiza valores pela tabela
 
+                double biomassa = (qtdPeixes * pesoMedio) / 1000;
 
-        double biomassa = (qtdPeixes * pesoMedio) / 1000;
+                qtdRacaoPorDia = (biomassa * (percPV / 100)) * (percTemp / 100);
 
+                qtdRacaoPorRefeicao = qtdRacaoPorDia / refPorDia;
+            } else {
+                tipoRacao = "Não alimentar";
+            }
+        }
+//    }
 
-        qtdRacaoPorDia = (biomassa * (percPV/100)) * (percTemp/100);
-
-        qtdRacaoPorRefeicao = qtdRacaoPorDia / refPorDia;
-    }
 
     private void qtdRacaoPorTemp(double temperatura) {
-
-            qtdRacaoPorRefeicao = qtdRacaoPorDia / refPorDia;
-        } else {
-            tipoRacao = "Não alimentar";
-        }
+//        if
+//            qtdRacaoPorRefeicao = qtdRacaoPorDia / refPorDia;
+//        } else {
+//            tipoRacao = "Não alimentar";
+//        }
     }
+
     //apenas para limpar a calculadora
     private void limpaValores() {
         refPorDia = 0;
@@ -64,31 +69,33 @@ public class CalculadoraController implements Parcelable {
 
     private double percRacaoPorTemp(double temperatura) {
 
+        if (temperatura < 16) {
+            percTemp = 0;
+            return percTemp;
+        }
 
         if (temperatura >= 16 && temperatura < 20) { // 16 a 19
             percTemp = 60;
-            return;
+            return percTemp;
         }
         if (temperatura < 25) { // 20 a 24
             percTemp = 80;
-            return;
+            return percTemp;
         }
         if (temperatura < 30) { // 25 a 29
             percTemp = 100;
-            return;
+            return percTemp;
         }
         if (temperatura < 33) { // 30 a 32
             percTemp = 80;
-            return;
+            return percTemp;
         }
 
-        if (temperatura > 32) { // > 32
-
-        if (temperatura < 16  || temperatura > 32) { //se a temperatura for menor que 16 ou maior que 32 entao nao alimenta
-
+        if (temperatura < 16 || temperatura > 32) { //se a temperatura for menor que 16 ou maior que 32 entao nao alimenta
             percTemp = 0.0;
-            return;
+            return percTemp;
         }
+        return 0;
     }
 
     private void valorestabela(double pesoMedio) {
@@ -159,7 +166,8 @@ public class CalculadoraController implements Parcelable {
             return;
         }
     }
-//Aqui são os getters para pegalos de fora da classe
+
+    //Aqui são os getters para pegalos de fora da classe
     public int getRefPorDia() {
         return refPorDia;
     }
@@ -211,11 +219,5 @@ public class CalculadoraController implements Parcelable {
             return new CalculadoraController[size];
         }
     };
-
-    public CalculadoraController getInstance() {
-        if (calculadora == null) {
-            calculadora = new CalculadoraController();
-        }
-        return calculadora;
-    }
 }
+
